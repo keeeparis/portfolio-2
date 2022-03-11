@@ -1,13 +1,14 @@
 import { Category, MainWrapper, Name } from './styles'
-import rawData from '../../mock/index.json'
-import Item from '../Item/Item'
+import Item from '../Item'
+import { FC } from 'react'
+import { ItemProps } from '../Item/types'
 
-const Main = () => {
+const Main:FC<{items: ItemProps[]}> = ({ items }) => {
     return (
         <MainWrapper>
             <Name>Пицца</Name>
             <Category>
-                {rawData.map(item => 
+                {items.map(item => 
                     <Item key={item.id} data={item} />
                 )}
             </Category>
