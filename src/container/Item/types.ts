@@ -4,4 +4,5 @@ export type ItemProps = {
     description: string;
     imgsrc: string;
     price: number;
+    categories: string[];       
 }
