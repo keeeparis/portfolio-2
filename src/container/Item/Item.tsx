@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { ItemProps } from '../Main/types'
+import { ItemProps } from './types'
 import { ItemButton, ItemDescription, ItemFooter, ItemImage, ItemMain, ItemName, ItemWrapper, Price } from './styles'
 
 const Item:FC<{data: ItemProps}> = ({ data }) => {
