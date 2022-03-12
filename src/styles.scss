@@ -1,2 +1,13 @@
-@import './media/style.css';
+@font-face {
+    font-family: 'Wolfram';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./media/Wolfram.otf') format('opentype');
+}
 
+@font-face {
+    font-family: 'Stratos';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./media/StratosLCWeb-Light.ttf');
+}

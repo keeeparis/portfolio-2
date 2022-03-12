@@ -1,6 +1,24 @@
 import styled from "styled-components"
 import { createGlobalStyle } from 'styled-components'
 
+export const GlobalStyle = createGlobalStyle`
+	:root {
+		--primary-button-color: rgb(255, 105, 0);
+		--secondary-button-color: rgb(232 97 3);
+		--thirdly-button-color: rgb(232 97 3 / 71%);
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: 'Stratos';
+	}
+
+	body {
+		background-color: papayawhip;
+	}
+`
+
 const Button = styled.button`
 	padding: 10px;
 	font-size: 15px;
@@ -37,21 +55,3 @@ export {
 	Wrapper,
 	InnerWrapper
 }
-
-export const GlobalStyle = createGlobalStyle`
-	:root {
-		--primary-button-color: rgb(255, 105, 0);
-		--secondary-button-color: rgb(232 97 3);
-		--thirdly-button-color: rgb(232 97 3 / 71%);
-	}
-
-	* {
-		margin: 0;
-		padding: 0;
-		font-family: 'Stratos';
-	}
-
-	body {
-		background-color: papayawhip;
-	}
-`
