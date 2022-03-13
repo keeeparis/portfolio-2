@@ -1,10 +1,15 @@
 import { FC, FormEvent, useEffect, useState } from 'react'
-import { Sorting, SortOptions, SortSelect, Option, RadioInput, DropDownHeader, DropDownListContainer, DropDownList, ListItem } from './styles'
 import { SortProps } from './types'
+import * as S from './styles'
 
 const options = ["популярности", "цене вверх", "цене вниз", "алфавиту"]
 
-const Sort:FC<SortProps> = ({ handleInputRadioChange, categorySort, selectedOption, handleSortingChange }) => {
+const Sort:FC<SortProps> = ({ 
+    handleInputRadioChange, 
+    handleSortingChange, 
+    categorySort, 
+    selectedOption
+}) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const isActive = (category: string, currentCategory: string) => {
@@ -32,45 +37,45 @@ const Sort:FC<SortProps> = ({ handleInputRadioChange, categorySort, selectedOpti
     }, [])
 
     return (
-        <Sorting>
-            <SortOptions onChange={handleInputRadioChange}>
-                <RadioInput value='isAll' type='radio' id='all' name='category'/>
-                <Option as='label' htmlFor="all" className={isActive(categorySort, 'isAll')}>Все</Option>
+        <S.Wrapper>
+            <S.Options onChange={handleInputRadioChange}>
+                <S.RadioInput value='isAll' type='radio' id='all' name='category'/>
+                <S.Option as='label' htmlFor="all" className={isActive(categorySort, 'isAll')}>Все</S.Option>
 
-                <RadioInput value='isMeat' type='radio' id='Meat' name='category'/>
-                <Option as='label' htmlFor="Meat" className={isActive(categorySort, 'isMeat')}>Мясные</Option>
+                <S.RadioInput value='isMeat' type='radio' id='Meat' name='category'/>
+                <S.Option as='label' htmlFor="Meat" className={isActive(categorySort, 'isMeat')}>Мясные</S.Option>
 
-                <RadioInput value='isVeg' type='radio' id='Veg' name='category'/>
-                <Option as='label' htmlFor="Veg" className={isActive(categorySort, 'isVeg')}>Вегетерианская</Option>
+                <S.RadioInput value='isVeg' type='radio' id='Veg' name='category'/>
+                <S.Option as='label' htmlFor="Veg" className={isActive(categorySort, 'isVeg')}>Вегетерианская</S.Option>
 
-                <RadioInput value='isGrill' type='radio' id='Grill' name='category'/>
-                <Option as='label' htmlFor="Grill" className={isActive(categorySort, 'isGrill')}>Гриль</Option>
+                <S.RadioInput value='isGrill' type='radio' id='Grill' name='category'/>
+                <S.Option as='label' htmlFor="Grill" className={isActive(categorySort, 'isGrill')}>Гриль</S.Option>
 
-                <RadioInput value='isSpicy' type='radio' id='Spicy' name='category'/>
-                <Option as='label' htmlFor="Spicy" className={isActive(categorySort, 'isSpicy')}>Острые</Option>
-            </SortOptions>
-            <SortSelect>
+                <S.RadioInput value='isSpicy' type='radio' id='Spicy' name='category'/>
+                <S.Option as='label' htmlFor="Spicy" className={isActive(categorySort, 'isSpicy')}>Острые</S.Option>
+            </S.Options>
+            <S.DropDownWrapper>
                 Сортировка по 
-                <DropDownHeader onClick={toggling}>
+                <S.DropDownHeader onClick={toggling}>
                     {selectedOption}
-                </DropDownHeader>
+                </S.DropDownHeader>
                 {isOpen && (
-                    <DropDownListContainer>
-                        <DropDownList>
+                    <S.DropDownListWrapper>
+                        <S.DropDownList>
                             {options.map((option, i) => (
-                                <ListItem 
+                                <S.ListItem 
+                                    key={i+1}
                                     onClick={handleOptionClicked(option)} 
-                                    key={i+1} 
                                     className={isActive(selectedOption, option)}
                                 >
                                     {option}
-                                </ListItem>
+                                </S.ListItem>
                             ))}
-                        </DropDownList>
-                    </DropDownListContainer>
+                        </S.DropDownList>
+                    </S.DropDownListWrapper>
                 )}
-            </SortSelect>
-        </Sorting>
+            </S.DropDownWrapper>
+        </S.Wrapper>
     )
 }
 
