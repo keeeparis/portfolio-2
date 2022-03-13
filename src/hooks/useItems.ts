@@ -18,10 +18,10 @@ const useSortedItems = (data: ItemProps[], sort: string) => {
                 return [...data].sort((a, b) => a.id - b.id)
                 
             case 'цене вверх':
-                return [...data].sort((a, b) => a.price - b.price)
+                return [...data].sort((a, b) => a.small_price - b.small_price)
 
             case 'цене вниз':
-                return [...data].sort((a, b) => b.price - a.price)
+                return [...data].sort((a, b) => b.small_price - a.small_price)
                 
             case 'алфавиту':
                 return [...data].sort((a, b) => a.name.localeCompare(b.name))

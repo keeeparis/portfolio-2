@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{menuOpen: boolean}>`
 	:root {
 		--primary-button-color: rgb(255, 105, 0);
 		--secondary-button-color: rgb(232 97 3);
@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		background-color: papayawhip;
+		overflow-y: ${({ menuOpen }) => menuOpen ? 'hidden' : 'auto'};
+		margin-right: ${({ menuOpen }) => menuOpen ? '17px' : 0};
 	}
 `
 

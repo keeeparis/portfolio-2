@@ -40,6 +40,15 @@ const CartButton = styled(Button)`
 	width: inherit;
 	color: white;
 	font-weight: bold;
+	display: flex;
+    justify-content: center;
+`
+const Bar = styled.div`
+	height: 24px;
+    width: 1px;
+    margin: 0px 12px;
+    background: rgb(255, 255, 255);
+    opacity: 0.4;
 `
 
 export { 
@@ -51,5 +60,6 @@ export {
 	LogoTextName,
 	LogoTextSub,
 	Cart,
-	CartButton 
+	CartButton,
+	Bar
 }

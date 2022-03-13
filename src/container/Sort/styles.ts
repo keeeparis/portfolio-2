@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { Button } from '../../styles'
 
-const Sorting = styled.div`
+const Wrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 40px;
 `
-const SortOptions = styled.div`
+const Options = styled.div`
 	display: flex;
 	gap: 10px;
 	position: relative;
@@ -23,12 +23,7 @@ const Option = styled(Button)`
 	transition-duration: 0.1s;
 	user-select: none;
 
-	&:hover {
-		color: white;
-		background-color: black;
-	}
-
-	&.active {
+	&:hover, &.active {
 		color: white;
 		background-color: black;
 	}
@@ -36,7 +31,7 @@ const Option = styled(Button)`
 const RadioInput = styled.input`
 	display: none;
 `
-const SortSelect = styled.div`
+const DropDownWrapper = styled.div`
 	display: flex;
 	position: relative;
 `
@@ -52,7 +47,7 @@ const DropDownHeader = styled("div")`
 		color: var(--secondary-button-color);
 	}
 `
-const DropDownListContainer = styled("div")`
+const DropDownListWrapper = styled("div")`
 	position: absolute;
 	z-index: 100;
 	top: 40px;
@@ -93,13 +88,13 @@ const ListItem = styled("li")`
 `
 
 export {
-    Sorting,
-    SortOptions,
+    Wrapper,
+    Options,
     Option,
-    SortSelect,
+    DropDownWrapper,
 	RadioInput,
 	DropDownHeader,
-	DropDownListContainer,
+	DropDownListWrapper,
 	DropDownList,
 	ListItem
 }

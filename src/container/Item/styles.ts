@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Button } from "../../styles"
 
-const ItemWrapper = styled.article`
+const Wrapper = styled.article`
 	display: flex;
     flex-flow: column;
     -webkit-box-pack: justify;
@@ -11,7 +11,7 @@ const ItemWrapper = styled.article`
     width: 262px;
     margin-right: 37.3333px;
 `
-const ItemMain = styled.div`
+const Main = styled.div`
 	margin: 0px;
     width: 100%;
     font-size: 14px;
@@ -19,11 +19,11 @@ const ItemMain = styled.div`
 	color: rgb(92, 99, 112);
     font-weight: 400;
 `
-const ItemFooter = styled.div`
+const Footer = styled.div`
     margin-top: 16px;
     display: flex;
 `
-const ItemImage = styled.picture`
+const Image = styled.picture`
     margin: 0px;
     position: relative;
     width: 100%;
@@ -34,21 +34,20 @@ const ItemImage = styled.picture`
 	&:hover {
 		top: 3px;
 	}
-
-	img {
-		width: 95%;
-    	margin: 5% 0px 0px 5%;
-		object-fit: contain;
-	}
 `
-const ItemName = styled.div`
+const ImageIcon = styled.img`
+    width: 95%;
+    margin: 5% 0px 0px 5%;
+    object-fit: contain;
+`
+const Name = styled.div`
     margin: 8px 0px;
     color: rgb(0, 0, 0);
     font-size: 20px;
     line-height: 24px;
     font-weight: bold;
 `
-const ItemDescription = styled.div``
+const Description = styled.div``
 const Price = styled.div`
     font-weight: bold;
     flex: 1 1 auto;
@@ -57,7 +56,7 @@ const Price = styled.div`
     color: rgb(0, 0, 0);
     line-height: 42px;
 `
-const ItemButton = styled(Button)`
+const ButtonS = styled(Button)`
     letter-spacing: 0.02em;
     flex: 0 0 auto;
     height: 40px;
@@ -68,12 +67,13 @@ const ItemButton = styled(Button)`
 `
 
 export {
-    ItemWrapper,
-    ItemMain,
-    ItemFooter,
-    ItemImage,
-    ItemName,
-    ItemDescription,
-    ItemButton,
-    Price
+    Wrapper,
+    Main,
+    Footer,
+    Image,
+    Name,
+    Description,
+    ButtonS,
+    ImageIcon,
+    Price,
 }
