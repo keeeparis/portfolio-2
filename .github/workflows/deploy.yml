@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: 12.x
         cache: 'npm'
+        github_token: ${{ PERSONAL_TOKEN }}
 
     - run: npm ci
     - run: |
