@@ -19,10 +19,10 @@ jobs:
       with:
         node-version: 12.x
         cache: 'npm'
-      run: npm ci
 
     - name: Running deploy.sh
-      run: |
+    - run: npm ci
+    - run: |
         chmod +x ./.github/deploy.sh
         ./.github/deploy.sh
       shell: bash
