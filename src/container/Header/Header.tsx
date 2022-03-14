@@ -1,12 +1,15 @@
-import { useContext } from 'react'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import pizzaIcon from '../../media/pizza-logo.svg'
-import { ItemContext } from '../context/ItemContext'
+import { selectAllProducts } from '../../redux/features/ProductSlice'
+import { RootState } from '../../redux/store/store'
+import { getTotalNumberOfItemsInCart } from '../../utils'
 import * as H from './styles'
 
 const Header = () => {
-    const { itemsInCart } = useContext(ItemContext)
+    const itemsInCart = useSelector((state: RootState) => selectAllProducts(state))
 
-    const itemsNumber = itemsInCart.reduce((prev, curr) => prev + curr.numberOfProducts, 0)
+    const itemsNumber = getTotalNumberOfItemsInCart(itemsInCart)
     const content = !!itemsNumber && <>
         <H.Bar />
         {itemsNumber}
@@ -14,20 +17,24 @@ const Header = () => {
 
     return (
         <H.Container>
-            <H.Logo>
-                <H.LogoImage>
-                    <H.LogoImageIcon src={pizzaIcon} /> 
-                </H.LogoImage>
-                <H.LogoText>
-                    <H.LogoTextName>React Pizza</H.LogoTextName>
-                    <H.LogoTextSub>самая вкусная пицца только у нас!</H.LogoTextSub>
-                </H.LogoText>
-            </H.Logo>
-            <H.Cart>
-                <H.CartButton>
-                    Корзина {content}
-                </H.CartButton>
-            </H.Cart>
+            <Link to='/'>
+                <H.Logo>
+                    <H.LogoImage>
+                        <H.LogoImageIcon src={pizzaIcon} /> 
+                    </H.LogoImage>
+                    <H.LogoText>
+                        <H.LogoTextName>React Pizza</H.LogoTextName>
+                        <H.LogoTextSub>самая вкусная пицца только у нас!</H.LogoTextSub>
+                    </H.LogoText>
+                </H.Logo>
+            </Link>
+            <Link to='/cart'>
+                <H.Cart>
+                    <H.CartButton>
+                        Корзина {content}
+                    </H.CartButton>
+                </H.Cart>
+            </Link>
         </H.Container>
     )
 }

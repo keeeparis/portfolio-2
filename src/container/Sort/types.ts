@@ -1,8 +1,6 @@
-import { Dispatch, FormEvent, SetStateAction } from "react"
+import { sortType } from "../../redux/features/SortingSlice";
 
 export type SortProps = {
-    handleInputRadioChange(event: FormEvent<HTMLDivElement>): void,
-    handleSortingChange(value: string): void;
-    categorySort: string;
-    selectedOption: string;
+    category: string;
+    sortOption: sortType;
 }

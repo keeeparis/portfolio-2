@@ -61,5 +61,5 @@ export {
 	LogoTextSub,
 	Cart,
 	CartButton,
-	Bar
+	Bar,
 }

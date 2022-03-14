@@ -17,7 +17,7 @@ export type ItemCartProps = {
     name: string;
     description: string;
     imgsrc: string;
-    size: string;
+    size: number;
     width: number;
     price: number;
     numberOfProducts: number;

@@ -1,6 +1,12 @@
-import { ItemCartProps, ItemProps } from "../Item/types"
+import { ItemProps } from "../Item/types"
 
 export type ModelItemProps = {
     item: ItemProps;
-    handleAddToCart(item: ItemProps, size: string, width: number, price: number): () => void;
+}
+
+export type addToCartDto = {
+    item: ItemProps;
+    size: number;
+    width: number;
+    price: number;
 }

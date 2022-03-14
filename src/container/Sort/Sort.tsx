@@ -1,34 +1,35 @@
-import { FC, FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react'
 import { SortProps } from './types'
 import * as S from './styles'
+import { useDispatch } from 'react-redux'
+import { categoryChange, catType, options, sortOptionChange, sortType } from '../../redux/features/SortingSlice'
 
-const options = ["популярности", "цене вверх", "цене вниз", "алфавиту"]
 
-const Sort:FC<SortProps> = ({ 
-    handleInputRadioChange, 
-    handleSortingChange, 
-    categorySort, 
-    selectedOption
-}) => {
+const Sort:FC<SortProps> = ({ category, sortOption }) => {
     const [isOpen, setIsOpen] = useState(false)
-
-    const isActive = (category: string, currentCategory: string) => {
-        return category === currentCategory ? 'active' : ''
-    }
+    const dispatch = useDispatch()
 
     const toggling = (e: FormEvent<HTMLDivElement>) => {
         e.stopPropagation()
         setIsOpen(!isOpen)
     }
 
-    const handleOptionClicked = (value: string) => (e: FormEvent<HTMLLIElement>) => {
+    const handleOptionClicked = (value: sortType) => (e: FormEvent<HTMLLIElement>) => {
         e.stopPropagation()
-        handleSortingChange(value)
+        dispatch(sortOptionChange(value))
         setIsOpen(false)
     }
 
     const handleClickOutside = () => {
         setIsOpen(false)
+    }
+
+    const handleInputRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(categoryChange(e.target.value))
+    }
+
+    const isActive = (category: string, currentCategory: string) => {
+        return category === currentCategory ? 'active' : ''
     }
 
     useEffect(() => {
@@ -40,24 +41,24 @@ const Sort:FC<SortProps> = ({
         <S.Wrapper>
             <S.Options onChange={handleInputRadioChange}>
                 <S.RadioInput value='isAll' type='radio' id='all' name='category'/>
-                <S.Option as='label' htmlFor="all" className={isActive(categorySort, 'isAll')}>Все</S.Option>
+                <S.Option as='label' htmlFor="all" className={isActive(category, 'isAll')}>Все</S.Option>
 
                 <S.RadioInput value='isMeat' type='radio' id='Meat' name='category'/>
-                <S.Option as='label' htmlFor="Meat" className={isActive(categorySort, 'isMeat')}>Мясные</S.Option>
+                <S.Option as='label' htmlFor="Meat" className={isActive(category, 'isMeat')}>Мясные</S.Option>
 
                 <S.RadioInput value='isVeg' type='radio' id='Veg' name='category'/>
-                <S.Option as='label' htmlFor="Veg" className={isActive(categorySort, 'isVeg')}>Вегетерианская</S.Option>
+                <S.Option as='label' htmlFor="Veg" className={isActive(category, 'isVeg')}>Вегетерианская</S.Option>
 
                 <S.RadioInput value='isGrill' type='radio' id='Grill' name='category'/>
-                <S.Option as='label' htmlFor="Grill" className={isActive(categorySort, 'isGrill')}>Гриль</S.Option>
+                <S.Option as='label' htmlFor="Grill" className={isActive(category, 'isGrill')}>Гриль</S.Option>
 
                 <S.RadioInput value='isSpicy' type='radio' id='Spicy' name='category'/>
-                <S.Option as='label' htmlFor="Spicy" className={isActive(categorySort, 'isSpicy')}>Острые</S.Option>
+                <S.Option as='label' htmlFor="Spicy" className={isActive(category, 'isSpicy')}>Острые</S.Option>
             </S.Options>
             <S.DropDownWrapper>
                 Сортировка по 
                 <S.DropDownHeader onClick={toggling}>
-                    {selectedOption}
+                    {sortOption}
                 </S.DropDownHeader>
                 {isOpen && (
                     <S.DropDownListWrapper>
@@ -66,7 +67,7 @@ const Sort:FC<SortProps> = ({
                                 <S.ListItem 
                                     key={i+1}
                                     onClick={handleOptionClicked(option)} 
-                                    className={isActive(selectedOption, option)}
+                                    className={isActive(sortOption, option)}
                                 >
                                     {option}
                                 </S.ListItem>

@@ -19,6 +19,12 @@ export const GlobalStyle = createGlobalStyle<{menuOpen: boolean}>`
 		overflow-y: ${({ menuOpen }) => menuOpen ? 'hidden' : 'auto'};
 		margin-right: ${({ menuOpen }) => menuOpen ? '17px' : 0};
 	}
+
+	a {
+		color: unset;
+		text-decoration: none;
+		display: inline-flex;
+	}
 `
 
 const Button = styled.button`

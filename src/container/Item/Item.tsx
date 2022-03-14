@@ -1,13 +1,14 @@
-import { FC, useContext } from 'react'
+import { FC } from 'react'
 import { ItemProps } from './types'
 import * as I from './styles'
-import { ItemContext } from '../context/ItemContext'
+import { useDispatch } from 'react-redux'
+import { setCurrentItem } from '../../redux/features/CurrentItemSlice'
 
 const Item:FC<{data: ItemProps}> = ({ data }) => {
-    const { setCurrentItem } = useContext(ItemContext)
+    const dispatch = useDispatch()
 
     const handleItemClick = (value: ItemProps) => () => {
-        setCurrentItem(value)
+        dispatch(setCurrentItem(value))
     }
 
     return (

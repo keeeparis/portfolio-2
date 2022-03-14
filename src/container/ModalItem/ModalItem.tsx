@@ -1,19 +1,23 @@
-import { ChangeEvent, FC, useContext, useEffect, useState } from "react"
+import { ChangeEvent, FC, useEffect, useState } from "react"
 import { CSSTransition } from "react-transition-group"
-import { ItemContext } from "../context/ItemContext"
 import { ModelItemProps } from "./types"
-import { currentPrice } from "./utils"
+import { useCurrentPrice } from "./utils"
+import { useDispatch } from "react-redux"
+import { removeCurrentItem } from "../../redux/features/CurrentItemSlice"
+import { addToCart } from "../../redux/features/ProductSlice"
 import * as M from "./styles"
 
-const ModalItem:FC<ModelItemProps> = ({ item, handleAddToCart }) => {
-    // FIXME: возможно разбить компонент на более мелкие
-    const { setCurrentItem } = useContext(ItemContext)
+const ModalItem:FC<ModelItemProps> = ({ item }) => {
     const [size, setsize] = useState('small_size')
     const [width, setwidth] = useState(0)
     const [transition, setTransition] = useState(false)
 
+    const dispatch = useDispatch()
+
+    const price = useCurrentPrice(item, size)
+
     const handleClickOutside = () => {
-        setCurrentItem(null)
+        dispatch(removeCurrentItem())
     }
 
     const handleSizeChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,13 +28,21 @@ const ModalItem:FC<ModelItemProps> = ({ item, handleAddToCart }) => {
         setwidth(Number(e.target.value))
     }
 
+    const handleAddToCart = () => {
+        const responseObj = { 
+            item, 
+            size: Number(item[size as keyof typeof item]), 
+            width, 
+            price 
+        }
+        dispatch(addToCart(responseObj))
+        dispatch(removeCurrentItem()) 
+    }
+
     const currentPizza = <>
         {item[size as keyof typeof item]} см, &nbsp;
         {width ? 'тонкое' : 'традиционное'} тесто
     </>
-
-    /* FIXME: вычисление price небольшое - но можно запихнуть в useMemo */
-    const price = currentPrice(item, size)
 
     useEffect(() => {
         window.addEventListener('click', handleClickOutside)
@@ -43,10 +55,6 @@ const ModalItem:FC<ModelItemProps> = ({ item, handleAddToCart }) => {
 
     return (
         <M.Wrapper>
-            {/* 
-                FIXME: используется findDomNode в cssTransition - 
-                предупреждения в консоли, использовать useRef?
-            */}
             <CSSTransition timeout={300} classNames='close' in={transition}> 
                 <M.BackgroundBoxShadow className="close" />
             </CSSTransition>
@@ -77,7 +85,7 @@ const ModalItem:FC<ModelItemProps> = ({ item, handleAddToCart }) => {
                             <M.Input type="radio" name="width" id="thin" value='1' />
                             <M.Label htmlFor="thin">Тонкое</M.Label>
                         </M.Select>
-                        <M.ButtonS onClick={handleAddToCart(item, size, width, price)}>
+                        <M.ButtonS onClick={handleAddToCart}>
                             Добавить в корзину за {price} тг.
                         </M.ButtonS>
                     </M.InfoWrapper>
