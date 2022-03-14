@@ -2,7 +2,15 @@
 
 set -e
 
-rm dist -r
+if [ -d "/dist" ]
+then 
+    echo "Folder dist exists"
+    ls
+    rm dist -r
+else
+    echo "folder dist does not exist"
+fi
+
 npm run build
 
 cd dist
