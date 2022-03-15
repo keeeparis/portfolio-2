@@ -45,12 +45,17 @@ const Button = styled.button`
 	}
 `
 const Wrapper = styled.div`
-	width: 1300px;
+	max-width: 1300px;
 	background-color: white;
 	margin: 20px auto;
 	border-radius: 10px;
 	box-shadow: 0 0 19px 0 rgba(0,0,0,0.3);
 	min-height: calc(100vh - 40px);
+	
+	@media screen and (max-width: 1200px) {
+		flex-wrap: wrap;
+		margin: 20px 10px;
+	}
 `
 const InnerWrapper = styled.div`
 	display: flex;

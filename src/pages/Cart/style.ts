@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../../styles";
 
 export const Container = styled.div`
-    width: 800px;
+    max-width: 800px;
     align-self: center;
 `
 export const Head = styled.div`
@@ -10,6 +10,10 @@ export const Head = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 30px;
+
+    @media screen and (max-width: 700px) {
+		gap: 20px;
+	}
 `
 export const CartWrap = styled.div`
     display: flex;
@@ -49,6 +53,10 @@ export const Info = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 700px) {
+		flex-direction: column;
+	}
 `
 export const InfoTotalNumber = styled.div`
     font-size: 1.3em;
@@ -67,6 +75,11 @@ export const Action = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 700px) {
+		flex-direction: column;
+        gap: 30px;
+	}
 `
 export const NoItems = styled.div`
     display: flex;
@@ -74,16 +87,21 @@ export const NoItems = styled.div`
     justify-content: center;
     flex-direction: column;
     margin-top: -25px;
+    text-align: center;
 `
 export const NoHeader = styled.h2`
     margin-bottom: 10px;
+    
+    @media screen and (max-width: 1024px) {
+        margin-bottom: 25px;
+	}
 `
 export const NoSub = styled.p`
     color: rgb(0 0 0 / 55%);
     margin-bottom: 5px;
 `
 export const NoImgWrapper = styled.div`
-    width: 400px;
+    max-width: 400px;
 `
 export const NoImg = styled.img`
     width: 95%;

@@ -56,7 +56,7 @@ const Sort:FC<SortProps> = ({ category, sortOption }) => {
                 <S.Option as='label' htmlFor="Spicy" className={isActive(category, 'isSpicy')}>Острые</S.Option>
             </S.Options>
             <S.DropDownWrapper>
-                Сортировка по 
+                <div>Сортировка по</div>
                 <S.DropDownHeader onClick={toggling}>
                     {sortOption}
                 </S.DropDownHeader>

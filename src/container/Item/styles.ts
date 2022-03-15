@@ -10,6 +10,11 @@ const Wrapper = styled.article`
     cursor: pointer;
     width: 262px;
     margin-right: 37.3333px;
+    
+    @media screen and (max-width: 600px) {
+        flex-wrap: wrap;
+        margin-right: 0;
+	}
 `
 const Main = styled.div`
 	margin: 0px;
@@ -22,6 +27,7 @@ const Main = styled.div`
 const Footer = styled.div`
     margin-top: 16px;
     display: flex;
+    align-items: center;
 `
 const Image = styled.picture`
     margin: 0px;

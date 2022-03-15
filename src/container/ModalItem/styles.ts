@@ -34,16 +34,25 @@ const InnerWrapper = styled.div`
 `
 const InnerInnerWrapper = styled.div`
 	position: relative;
-    width: 924px;
+    max-width: 924px;
     overflow: hidden;
     border-radius: 20px;
 	transform: scale(1);
 	background-color: white;
 	display: flex;
+
+	@media screen and (max-width: 1024px) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 `
 const ImageWrapper = styled.div`
-	width: 500px;
+	max-width: 500px;
 	flex-shrink: 0;
+	
+	@media screen and (max-width: 800px) {
+		width: fit-content;
+	}
 `
 const Image = styled.picture`
     margin: 0px;
@@ -59,6 +68,10 @@ const ImageIcon = styled.img`
 const InfoWrapper = styled.div`
 	padding: 25px;
 	flex: 1 1 auto;
+	
+	@media screen and (max-width: 800px) {
+		padding: 0 25px 25px;
+	}
 `
 const Name = styled.h2`
 	margin-bottom: 5px;
@@ -84,6 +97,10 @@ const ButtonS = styled(Button)`
 	width: 100%;
 	font-weight: bold;
 	margin-top: 40px;
+	
+	@media screen and (max-width: 1024px) {
+		margin-top: 10px;
+	}
 `
 const Input = styled.input`
 	display: none;

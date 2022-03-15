@@ -6,11 +6,21 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 40px;
+
+	@media screen and (max-width: 1024px) {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 20px;
+	}
 `
 const Options = styled.div`
 	display: flex;
 	gap: 10px;
 	position: relative;
+
+	@media screen and (max-width: 1024px) {
+		flex-wrap: wrap;
+	}
 `
 const Option = styled(Button)`
 	width: fit-content;
@@ -34,6 +44,10 @@ const RadioInput = styled.input`
 const DropDownWrapper = styled.div`
 	display: flex;
 	position: relative;
+
+	div {
+		flex: 1 0 auto;
+	}
 `
 const DropDownHeader = styled("div")`
 	margin-left: 0.4em;

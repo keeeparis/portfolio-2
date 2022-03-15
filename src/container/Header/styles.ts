@@ -6,6 +6,12 @@ const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 80px;
+	
+	@media screen and (max-width: 1024px) {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 50px;
+	}
 `
 const Logo = styled.div`
 	display: flex;

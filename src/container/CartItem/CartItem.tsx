@@ -7,7 +7,7 @@ import * as I from './styles'
 const CartItem:FC<{item: ItemCartProps}> = ({ item }) => {
     const dispatch = useDispatch()
     const currentPizza = <>
-        {item.size} см, &nbsp;
+        {item.size} см,&nbsp;
         {item.width ? 'тонкое' : 'традиционное'} тесто
     </>
 

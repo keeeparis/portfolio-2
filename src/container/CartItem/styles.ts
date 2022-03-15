@@ -4,11 +4,22 @@ import { Button } from "../../styles";
 export const Wrapper = styled.div`
     display: flex;
     align-items: center;
+
+    @media screen and (max-width: 700px) {
+		flex-wrap: wrap;
+        margin-bottom: 30px;
+	}
 `
 export const Info = styled.div`
     display: flex;
     align-items: center;
     width: 60%;
+
+    @media screen and (max-width: 700px) {
+		flex-grow: 1;
+        flex-basis: fit-content;
+        margin-bottom: 15px;
+	}
 `
 export const ImgWrapper = styled.div`
     width: 100px;
