@@ -16,13 +16,15 @@ export const Info = styled.div`
     width: 60%;
 
     @media screen and (max-width: 700px) {
-		flex-grow: 1;
-        flex-basis: fit-content;
+		flex: 1 1 content;
         margin-bottom: 15px;
 	}
 `
 export const ImgWrapper = styled.div`
     width: 100px;
+    @media screen and (max-width: 700px) {
+        flex: 1 0 auto;
+	}
 `
 export const ImageIcon = styled.img`
     width: 100%;
@@ -45,6 +47,10 @@ export const Counter = styled.div`
     display: flex;
     align-items: center;
     font-weight: bold;
+
+    @media screen and (max-width: 700px) {
+        margin-left: 8px;
+    }
 `
 export const ButtonS = styled(Button)`
     width: 30px;

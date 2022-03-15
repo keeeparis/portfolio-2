@@ -2,8 +2,13 @@ import styled from "styled-components";
 import { Button } from "../../styles";
 
 export const Container = styled.div`
-    max-width: 800px;
+    width: 800px;
     align-self: center;
+    
+    @media screen and (max-width: 1000px) {
+        /* max-width: 800px; */
+        width: unset;
+    }
 `
 export const Head = styled.div`
     display: flex;
