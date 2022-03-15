@@ -50,6 +50,7 @@ export const Counter = styled.div`
 
     @media screen and (max-width: 700px) {
         margin-left: 8px;
+        flex: 0 1 content;
     }
 `
 export const ButtonS = styled(Button)`
