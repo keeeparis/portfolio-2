@@ -4,12 +4,11 @@ import Main from '../container/Main'
 
 import { useItems } from '../hooks/useItems'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux/store/store'
 import { selectCategory, selectSortOption } from '../redux/features/SortingSlice'
 
 function App() {
-	const category = useSelector((state: RootState) => selectCategory(state))
-	const sortOption = useSelector((state: RootState) => selectSortOption(state))
+	const category = useSelector(selectCategory)
+	const sortOption = useSelector(selectSortOption)
 
 	const sortedItems = useItems(rawData, category, sortOption)
 

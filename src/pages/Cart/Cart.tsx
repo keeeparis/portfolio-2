@@ -5,13 +5,12 @@ import shoppingCart from '../../media/shopping-cart-head.svg'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { removeAllCart, selectAllProducts } from '../../redux/features/ProductSlice'
-import { RootState } from '../../redux/store/store'
 import { Link, useNavigate } from 'react-router-dom'
 import { getTotalNumberOfItemsInCart, getTotalPrice } from '../../utils'
 import * as C from './style'
 
 const Cart = () => {
-    const items = useSelector((state: RootState) => selectAllProducts(state))
+    const items = useSelector(selectAllProducts)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
